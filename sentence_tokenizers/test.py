@@ -4,7 +4,7 @@ import nltk
 import pickle
 
 def test(test_corpus_path, model):
-    with open(test_corpus_path, 'rb+') as save_file:
+    with open(test_corpus_path, 'rb') as save_file:
         tokenizer = pickle.load(save_file)
         with open(test_corpus_path) as test_file:
             contents = test_file.read()

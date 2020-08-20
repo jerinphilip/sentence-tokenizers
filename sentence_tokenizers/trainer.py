@@ -18,7 +18,7 @@ def train(corpus, save_path):
         with open(save_path, 'wb+') as save_file:
             pickle.dump(model, save_file, protocol=pickle.HIGHEST_PROTOCOL)
 
-        inspect_tokenizer(model)
+    inspect_tokenizer(model)
 
 if __name__ == '__main__':
     parser = ArgumentParser()
