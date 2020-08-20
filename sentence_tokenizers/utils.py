@@ -20,7 +20,6 @@ def PunktDelimiter(lang):
 
     base_end_chars = PunktLanguageVars.sent_end_chars
     sent_end_chars = tuple(list(base_end_chars) + list(lang_delimiters))
-    print(lang, sent_end_chars)
 
     overrides = {
         'sent_end_chars': sent_end_chars
