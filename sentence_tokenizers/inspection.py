@@ -10,9 +10,9 @@ def inspect_tokenizer(tokenizer):
         print()
 
 def _inspect(save_path):
-    formatted_path = 'file:{}'.format(save_path)
-    tokenizer = nltk.data.load(formatted_path)
-    inspect_tokenizer
+    with open(save_path, 'rb+') as save_file:
+        tokenizer = pickle.load(save_file)
+        inspect_tokenizer(tokenizer)
 
 if __name__ == '__main__':
     parser = ArgumentParser()
