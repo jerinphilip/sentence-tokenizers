@@ -615,6 +615,10 @@ class PunktBaseClass(object):
                 aug_tok.abbr = True
             else:
                 aug_tok.sentbreak = True
+        else:
+            for sent_end_char in self._lang_vars.sent_end_chars:
+                if tok[-1] == sent_end_char:
+                    aug_tok.sentbreak = True
 
         return
 
