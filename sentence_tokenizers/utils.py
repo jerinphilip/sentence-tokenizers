@@ -5,14 +5,15 @@ def debug_cls(cls):
     from pprint import pprint
     pprint(_d)
 
+delimiters = {
+    'hi': '\u0964',
+    'bn': '\u0964',
+    'ur': '\u06D4'
+}
+
 def PunktDelimiter(lang):
     # The symbols are obtainable here.
     # https://apps.timwhitlock.info/unicode/inspect?
-    delimiters = {
-        'hi': '\u0964',
-        'bn': '\u0964',
-        'ur': '\u06D4'
-    }
 
     lang_delimiters = delimiters.get(lang, '')
     lang_vars_class_name = 'PunktLanguageVars_{}'.format(lang)
@@ -27,3 +28,13 @@ def PunktDelimiter(lang):
 
     cls = type(lang_vars_class_name, (PunktLanguageVars,), overrides)
     return cls
+
+def PostFixHack(lines, lang):
+    if lang in delimiters:
+        delim = delimiters.get(lang)
+        fixed_lines = []
+        if lang in lang_delimiters:
+            for line in lines:
+                segments = line.split(delim)
+
+
