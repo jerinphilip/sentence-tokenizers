@@ -6,10 +6,12 @@ def debug_cls(cls):
     pprint(_d)
 
 def PunktDelimiter(lang):
+    # The symbols are obtainable here.
+    # https://apps.timwhitlock.info/unicode/inspect?
     delimiters = {
-        'hi': '।',
-        'bn': '।',
-        'ur': '۔'
+        'hi': '\u0964',
+        'bn': '\u0964',
+        'ur': '\u06D4'
     }
 
     lang_delimiters = delimiters.get(lang, '')
