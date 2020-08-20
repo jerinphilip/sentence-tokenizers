@@ -205,8 +205,7 @@ class PunktLanguageVars(object):
 
     @property
     def _re_sent_end_chars(self):
-        _re_sent_end_chars_generated = "[%s]" % re.escape("".join(self.sent_end_chars))
-        return _re_sent_end_chars_generated
+        return "[%s]" % re.escape("".join(self.sent_end_chars))
 
     internal_punctuation = ",:;"  # might want to extend this..
     """sentence internal punctuation, which indicates an abbreviation if
@@ -279,11 +278,14 @@ class PunktLanguageVars(object):
         try:
             return self._re_period_context
         except:
-            _context_string = self._period_context_fmt % {
+            self._re_period_context = re.compile(
+                self._period_context_fmt
+                % {
                     "NonWord": self._re_non_word_chars,
                     "SentEndChars": self._re_sent_end_chars,
-            }
-            self._re_period_context = re.compile(_context_string, re.UNICODE | re.VERBOSE)
+                },
+                re.UNICODE | re.VERBOSE,
+            )
             return self._re_period_context
 
 
@@ -599,7 +601,6 @@ class PunktBaseClass(object):
         """
 
         tok = aug_tok.tok
-        flag = True
 
         if tok in self._lang_vars.sent_end_chars:
             aug_tok.sentbreak = True
@@ -614,10 +615,6 @@ class PunktBaseClass(object):
                 aug_tok.abbr = True
             else:
                 aug_tok.sentbreak = True
-        else:
-            for sent_end_char in self._lang_vars.sent_end_chars:
-                if tok[-1] == sent_end_char:
-                    aug_tok.sentbreak = True
 
         return
 
@@ -1378,8 +1375,6 @@ class PunktSentenceTokenizer(PunktBaseClass, TokenizerI):
         Returns True if the given text includes a sentence break.
         """
         found = False  # used to ignore last token
-        tokens = list(self._tokenize_words(text))
-
         for t in self._annotate_tokens(self._tokenize_words(text)):
             if found:
                 return True
