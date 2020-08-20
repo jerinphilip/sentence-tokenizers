@@ -1,5 +1,5 @@
 from argparse import ArgumentParser
-from nltk.tokenize.punkt import PunktTrainer, PunktSentenceTokenizer
+from .punkt import PunktTrainer, PunktSentenceTokenizer
 import nltk
 import pickle
 from .inspection import inspect_tokenizer

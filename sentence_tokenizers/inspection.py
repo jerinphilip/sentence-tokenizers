@@ -1,6 +1,6 @@
 from argparse import ArgumentParser
 import nltk
-from nltk.tokenize.punkt import PunktTrainer, PunktSentenceTokenizer
+from .punkt import PunktTrainer, PunktSentenceTokenizer
 import pickle
 
 def inspect_tokenizer(tokenizer):

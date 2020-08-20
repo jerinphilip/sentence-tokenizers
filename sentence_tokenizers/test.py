@@ -1,12 +1,10 @@
 from argparse import ArgumentParser
 import nltk
-from nltk.tokenize.punkt import PunktTrainer, PunktSentenceTokenizer
+from .punkt import PunktTrainer, PunktSentenceTokenizer
 from .utils import PunktDelimiter
 import pickle
 
 def test(lang, test_corpus_path, model):
-    # tokenizer = nltk.data.load('file:'+model)
-
     lang_vars = PunktDelimiter(lang)()
     tokenizer = PunktSentenceTokenizer(lang_vars=lang_vars)
 
