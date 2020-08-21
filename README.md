@@ -1,6 +1,6 @@
 # sentence-tokenizers
 
-This repository was used to prototype [Punkt](https://www.aclweb.org/anthology/J06-4003.pdf) based segmentation for Indian Languages, and has since been merged into [jerinphilip/ilmulti](https://github.com/jerinphilip/ilmulti/tree/master/ilmulti/segment/punkt_segmenter) and has been archived since. 
+This repository was used to prototype [Punkt](https://www.aclweb.org/anthology/J06-4003.pdf) based segmentation for Indian Languages, and has since been merged into [jerinphilip/ilmulti](https://github.com/jerinphilip/ilmulti/tree/master/ilmulti/segment/punkt_segmenter) and has been archived since. Training data is monolingual corpora extracted from the Press Information Bureau (PIB) website.
 
 Supports the following languages and a smaller abbreviation set:
 
